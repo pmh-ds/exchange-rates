@@ -1,0 +1,9 @@
+{
+  "name": "exchange-rates",
+  "description": "Exchange rate tracker.",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::546531812954:role/exchange-rates_lambda_function",
+  "profile": "apex-user",
+  "environment": {}
+}
