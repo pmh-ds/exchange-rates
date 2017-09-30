@@ -5,5 +5,6 @@
   "timeout": 5,
   "role": "arn:aws:iam::546531812954:role/exchange-rates_lambda_function",
   "profile": "apex-user",
-  "environment": {}
+  "environment": {},
+  "runtime": "python3.6"
 }
