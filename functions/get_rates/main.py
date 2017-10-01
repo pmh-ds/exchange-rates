@@ -1,7 +1,11 @@
 import boto3
 import requests
+import logging
 
-print('Loading function')
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+logger.info('Loading function')
 
 
 def reformat_json(response):
@@ -23,11 +27,15 @@ def handle(event, context):
     dynamodb = boto3.client('dynamodb', 'eu-west-2')
 
     response = requests.get("http://api.fixer.io/latest?base=GBP")
-    print(response.status_code)
+    if response.status_code == 200:
+        logger.info("Request to Fixer successful")
+    else:
+        logger.info("Response status code {}".format(response.status_code))
+        return {"success": False, "status_code": response.status_code}
 
     response_json = reformat_json(response.json())
 
     dynamodb.put_item(TableName="exchange-rates-table",
                       Item=response_json)
 
-    return response_json
+    return {"success": True, "status_code": response.status_code}
