@@ -1,14 +1,24 @@
 import json
 import requests
+from decimal import Decimal
 
 print('Loading function')
 
 
 def reformat_json(response):
     rates = response.pop("rates")
+    response.pop("base")
     response.update(rates)
+    response_updated = {}
+    for key, val in response.items():
+        if key == "date":
+            val_type = "S"
+        else:
+            val_type = "N"
+            val = Decimal(str(val))
+        response_updated[key] = {val_type: val}
 
-    return response
+    return response_updated
 
 
 def handle(event, context):
