@@ -1,6 +1,5 @@
 import boto3
 import requests
-from uuid import uuid4
 
 print('Loading function')
 
@@ -17,8 +16,6 @@ def reformat_json(response):
             val = str(val)
         response_updated[key] = {val_type: val}
 
-    response_updated["uuid"] = {"S": str(uuid4())}
-
     return response_updated
 
 
@@ -30,7 +27,7 @@ def handle(event, context):
 
     response_json = reformat_json(response.json())
 
-    dynamodb.put_item(TableName="exchange-rate-table",
+    dynamodb.put_item(TableName="exchange-rates-table",
                       Item=response_json)
 
     return response_json
