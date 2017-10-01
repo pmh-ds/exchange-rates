@@ -18,7 +18,7 @@ def reformat_json(response):
             val = Decimal(str(val))
         response_updated[key] = {val_type: val}
 
-    response_updated["uuid"] = {"S": uuid4()}
+    response_updated["uuid"] = {"S": str(uuid4())}
 
     return response_updated
 
