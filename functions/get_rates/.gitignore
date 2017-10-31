@@ -4,3 +4,4 @@
 !requirements.txt
 !.gitignore
 !function.json
+!tests.py
