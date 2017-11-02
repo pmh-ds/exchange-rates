@@ -1,6 +1,4 @@
 from unittest import TestCase, mock
-import boto3
-from botocore.stub import Stubber
 
 from main import reformat_json, handle
 
