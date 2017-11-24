@@ -1,7 +1,0 @@
-*.py
-*/*
-!main.py
-!requirements.txt
-!.gitignore
-!function.json
-!tests.py

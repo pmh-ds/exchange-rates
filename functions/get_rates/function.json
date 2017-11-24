@@ -1,5 +1,7 @@
 {
   "hooks":{
-    "build": "pip install -r requirements.txt -t ."
+    "build": "pip install -r requirements.txt -t .",
+    "deploy": "nosetests",
+    "clean": "sh clean_up.sh"
   }
 }
